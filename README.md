@@ -4,13 +4,36 @@ Persistent knowledge base of lessons learned, workflow improvements, and gotchas
 
 Reference these files at the start of any new conversation to avoid repeating solved problems.
 
-## Index
+## Universal Files (Always Read)
 
 | File | Topics |
 |------|--------|
-| [github-integration.md](./github-integration.md) | Push workflow, SHA handling, response truncation fix |
-| [android-dev.md](./android-dev.md) | Azure Speech SDK, Kotlin patterns, MyTranslator lessons |
-| [general.md](./general.md) | Cross-project lessons and general session tips |
+| [github-integration.md](./github-integration.md) | Push-first rule, SHA handling, response truncation fix, commit conventions |
+| [general.md](./general.md) | How to start sessions, efficiency tips, when to update this repo |
+
+## Project-Specific Files
+
+| File | Language / Stack | App |
+|------|-----------------|-----|
+| [projects/android-mytranslator.md](./projects/android-mytranslator.md) | Kotlin / Android | MyTranslator — Azure Speech real-time translation |
+| [projects/dotnet-redinn.md](./projects/dotnet-redinn.md) | VB.NET / .NET 8 | Red Inn Court — dynamic pricing system |
+
+## How to Reference in a New Conversation
+
+Paste this at the start of every session, adjusting the project file as needed:
+
+```
+Refer to my best practices repo before we start:
+https://github.com/Beansz2015/perplexity-best-practices
+
+Universal files: github-integration.md, general.md
+Project file: projects/android-mytranslator.md
+```
+
+For a brand new project with no existing file:
+```
+No project file yet — create projects/python-newapp.md as we go.
+```
 
 ---
 _Last updated: 2026-03-25_
