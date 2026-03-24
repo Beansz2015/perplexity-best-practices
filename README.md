@@ -4,14 +4,21 @@ Persistent knowledge base of lessons learned, workflow improvements, and gotchas
 
 Reference these files at the start of any new conversation to avoid repeating solved problems.
 
-## Universal Files (Always Read)
+## Universal Files
+
+### Always Include
 
 | File | Topics |
 |------|--------|
 | [github-integration.md](./github-integration.md) | Push-first rule, SHA handling, response truncation fix, commit conventions |
 | [general.md](./general.md) | How to start sessions, efficiency tips, when to update this repo |
 | [writing-style.md](./writing-style.md) | Tone, directness, what to avoid, hallucination checks |
-| [trader-profile.md](./trader-profile.md) | Trading background, style, indicator preferences, AI collaboration preferences |
+
+### Include When Relevant
+
+| File | When to Include |
+|------|----------------|
+| [trader-profile.md](./trader-profile.md) | Trading / Deribit / crypto strategy sessions |
 
 ## Project-Specific Files
 
@@ -20,21 +27,29 @@ Reference these files at the start of any new conversation to avoid repeating so
 | [projects/android-mytranslator.md](./projects/android-mytranslator.md) | Kotlin / Android | MyTranslator — Azure Speech real-time translation |
 | [projects/dotnet-redinn.md](./projects/dotnet-redinn.md) | VB.NET / .NET 8 | Red Inn Court — dynamic pricing system |
 
-## How to Reference in a New Conversation
+## Session Starter Templates
 
-Paste this at the start of every session, adjusting the project file as needed:
+**Hostel / AppSheet / general dev session:**
+```
+Refer to my best practices repo before we start:
+https://github.com/Beansz2015/perplexity-best-practices
 
+Universal files: github-integration.md, general.md, writing-style.md
+Project file: projects/[name].md
+```
+
+**Trading / Deribit session:**
 ```
 Refer to my best practices repo before we start:
 https://github.com/Beansz2015/perplexity-best-practices
 
 Universal files: github-integration.md, general.md, writing-style.md, trader-profile.md
-Project file: projects/android-mytranslator.md
+Project file: projects/[name].md
 ```
 
-For a brand new project with no existing file:
+**Brand new project, no existing file:**
 ```
-No project file yet — create projects/python-newapp.md as we go.
+No project file yet — create projects/[language]-[appname].md as we go.
 ```
 
 ---
