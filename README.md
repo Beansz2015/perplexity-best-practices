@@ -10,6 +10,8 @@ Reference these files at the start of any new conversation to avoid repeating so
 |------|--------|
 | [github-integration.md](./github-integration.md) | Push-first rule, SHA handling, response truncation fix, commit conventions |
 | [general.md](./general.md) | How to start sessions, efficiency tips, when to update this repo |
+| [writing-style.md](./writing-style.md) | Tone, directness, what to avoid, hallucination checks |
+| [trader-profile.md](./trader-profile.md) | Trading background, style, indicator preferences, AI collaboration preferences |
 
 ## Project-Specific Files
 
@@ -26,7 +28,7 @@ Paste this at the start of every session, adjusting the project file as needed:
 Refer to my best practices repo before we start:
 https://github.com/Beansz2015/perplexity-best-practices
 
-Universal files: github-integration.md, general.md
+Universal files: github-integration.md, general.md, writing-style.md, trader-profile.md
 Project file: projects/android-mytranslator.md
 ```
 
