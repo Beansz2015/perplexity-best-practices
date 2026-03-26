@@ -137,9 +137,8 @@ Last updated: 2026-03-14
     Decision process:   Spec-first. Novel questions to strategy conversation (Perplexity).
                         Decisions documented in .md and committed before coding.
     GitHub workflow:    Proposal .md → strategy review → response .md committed → implementation.
-                        All docs in /docs folder of DeribitVerdictEngine repo.
+                        All docs in main folder of perplexity-best-practices repo.
     Review preference:  Show what changed and why. Changelog for every version.
     Proactive flagging: Flag design issues before implementing. Don't silently conflict with spec.
     Push back when:     A change reintroduces deliberately removed patterns. Cite the version.
     Avoid:              Re-opening settled decisions without new data. Increasing indicator correlation.
-    Conversation split: Strategy/spec decisions → Perplexity. Implementation/debugging → Claude.
