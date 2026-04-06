@@ -1,7 +1,7 @@
 # DeribitVerdictEngine — Project Documentation
 **Repo:** https://github.com/Beansz2015/DeribitVerdictEngine  
 **Language:** VB.NET / .NET 8 / Windows Forms  
-**Last updated:** 2026-04-06 | **App version:** v0.30
+**Last updated:** 2026-04-07 | **App version:** v0.32
 
 > This file lives in `perplexity-best-practices/projects/` and is updated by the AI
 > at the end of every session. The authoritative technical handover (file versions,
@@ -31,18 +31,20 @@ scalping aid on 1-minute charts.
 - [x] `AnalysisLogger` — CSV logging of every run; Calibration Readiness Report
       (checks ≥300 rows, ≥3 sessions, ≥3 regimes, ≥2 liquidation events)
 
-### Indicators (all in `Indicators.vb` v0.30)
+### Indicators (all in `Indicators.vb` v0.32)
 - [x] ROC(9) — lookback from settings
 - [x] RSI(9) — period from settings; RSI divergence (price gate + delta gate from settings)
 - [x] DMI/ADX(9) on 5m candles
 - [x] Volume SMA(9) with DynamicNorms threshold
-- [x] VWAP deviation with DynamicNorms threshold
+- [x] VWAP deviation with DynamicNorms threshold; dual-session support (daily 00:00 UTC /
+      US session 13:30 UTC); session boundary times fully configurable in settings.json;
+      warmup candle threshold from settings; σ1/σ2 sigma bands displayed
 - [x] BBW Squeeze (period 20, StdDev 2.0) — ACTIVE / RELEASING / NONE
 - [x] EMA Ribbon (9/21/50) — BULL / BEAR / MIXED; 5m EMA(200) regime anchor
 - [x] OFI — top-3 order book levels, weights 3/2/1 — BUY / SELL / NEUTRAL
 - [x] Liquidations — large threshold from settings; penalty-only signal
 - [x] CVD (Cumulative Volume Delta) — net delta + slope (RISING/FALLING/FLAT) +
-      divergence flag (BULLISH_DIV / BEARISH_DIV / NONE); divergence gate from settings
+      divergence flag (BULLISH / BEARISH / NONE); all gates from settings
 - [x] Donchian(20) — LONG / SHORT / NONE breakout signal
 - [x] OBV — trend gate + divergence gate from settings
 - [x] OI ring buffer — 15m + 60m delta; NEW LONGS / SHORTS / COVERING / CAPITULATION / NEUTRAL
@@ -60,10 +62,18 @@ scalping aid on 1-minute charts.
 - [x] CalcHoldStatus for open position guidance
 - [x] All thresholds and gates fully wired to `EngineSettings` / `settings.json`
 
-### UI (`MainForm.vb` v0.30)
-- [x] Async analysis loop with configurable interval
+### Settings (`EngineSettings.vb` v0.32 + `settings.json` v3)
+- [x] `VwapSettings` class: `Session1StartHour/Minute`, `Session2StartHour/Minute`,
+      `WarmupCandles`, `DevThresholdPct` — all configurable without recompiling
+- [x] `CvdSettings` class: `SlopeMinUsd`, `SlopePctOfValue`, `DivergencePriceGate`, `TradeLookback`
+- [x] All indicator periods, gates, and scoring weights in settings.json
+
+### UI (`MainForm.vb` v0.32)
+- [x] Async analysis loop
 - [x] Colour-coded verdict label
 - [x] Full tiered output display (CORE → TIER 1 → TIER 2 → TIER 3 → SCORING)
+- [x] VWAP display: value, dev%, session candle count, sigma bands, session label,
+      [WARMUP] tag if below threshold
 - [x] CVD display line in TIER 2 block
 - [x] All indicator call sites pass settings-derived parameters
 - [x] `SettingsLoader.Initialise()` called in constructor
@@ -77,7 +87,7 @@ The `AnalysisLogger` CSV accumulates verdict + signal data every run. Once the
 Calibration Readiness Report reaches READY (≥300 rows, ≥3 sessions, ≥3 regimes,
 ≥2 liquidation events), the plan is to build an auto-tuning pass that:
 - Reads the CSV
-- Correlates each signal's vote with subsequent price direction
+- Correlates each signal’s vote with subsequent price direction
 - Adjusts scoring weights and gate thresholds in `settings.json` automatically
 - This eliminates manual backtesting and makes the engine self-calibrating
 
@@ -118,3 +128,5 @@ At the end of every session that changes code or plans, the AI must:
 | Date | Changes |
 |---|---|
 | 2026-04-06 | Full engine wired to settings.json; CVD fully integrated (Indicators + ScoringEngine + MainForm); all indicator call sites pass settings params; ScoringEngine.Calculate accepts cfg as 4th arg; handover doc created in DeribitVerdictEngine/docs/ |
+| 2026-04-06 | v0.31: CalcVWAP captures sessionCandleCount via ByRef; CalcVWAPBands added (σ1/σ2); VWAP display shows bands, session candle count, warmup tag |
+| 2026-04-07 | v0.32: VWAP session boundary times and warmup threshold moved from hardcoded values to settings.json; VwapSettings class expanded; CalcVWAP/CalcVWAPBands parameterised; MainForm reads session times from cfg.Indicators.VWAP; docs updated |
