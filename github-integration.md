@@ -44,8 +44,8 @@ If unsure whether a push happened (e.g. after a truncated response):
 
 ## Push Tool Parameters
 
-- `push_files` for multi-file commits in one shot (preferred)
-- `create_or_update_file` for single-file updates (requires SHA)
+- `push_files` for multi-file commits in one shot (preferred during low load timeframes - 3am - 8pm UTC+8)
+- `create_or_update_file` for single-file updates (requires SHA) - (preferred during high load timeframes - 8pm - 3am UTC+8)
 - Always include a meaningful `message` following conventional commits format:
   - `feat:` new feature
   - `fix:` bug fix
