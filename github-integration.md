@@ -46,6 +46,7 @@ If unsure whether a push happened (e.g. after a truncated response):
 
 - `push_files` for multi-file commits in one shot (preferred during low load timeframes - 3am - 8pm UTC+8)
 - `create_or_update_file` for single-file updates (requires SHA) - (preferred during high load timeframes - 8pm - 3am UTC+8)
+- Always push to master branch. Never 'main' branch which is deprecated.
 - Always include a meaningful `message` following conventional commits format:
   - `feat:` new feature
   - `fix:` bug fix
