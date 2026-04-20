@@ -18,7 +18,7 @@
 
 ## Session Efficiency Tips
 
-- Ask Perplexity to **push first, explain second** (see `github-integration.md`)
-- For large code changes, say: "push directly to GitHub, only show the diff in your response"
-- If a response is cut off, say: "check if it was pushed" before asking to redo the work
+- Ask Perplexity to **commit first, explain second** (see `github-integration.md`)
+- For large code changes, say: "commit directly to GitHub, only show the diff in your response"
+- If a response is cut off, say: "check if it was committed" before asking to redo the work
 - Break multi-bug fixes into separate turns to reduce response length per turn
